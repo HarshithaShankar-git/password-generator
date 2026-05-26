@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Password Generator</title>
+
+<style>
+
+body{
+font-family:Arial,sans-serif;
+background:#f0f2f5;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
+}
+
+.container{
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 0 20px rgba(0,0,0,0.2);
+width:350px;
+text-align:center;
+}
+
+h2{
+color:#0078d4;
+margin-bottom:20px;
+}
+
+input[type=number]{
+width:70px;
+padding:8px;
+margin-bottom:15px;
+}
+
+.options{
+text-align:left;
+margin:15px;
+}
+
+button{
+background:#0078d4;
+color:white;
+padding:10px 20px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+margin-top:15px;
+font-size:15px;
+}
+
+button:hover{
+background:#005fa3;
+}
+
+#password{
+margin-top:20px;
+padding:10px;
+border:1px solid #ccc;
+border-radius:5px;
+word-wrap:break-word;
+font-weight:bold;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Password Generator 🔐</h2>
+
+<label>Password Length:</label>
+
+<input type="number" id="length" value="12" min="4" max="30">
+
+<div class="options">
+
+<input type="checkbox" id="uppercase" checked>
+<label>Uppercase Letters</label>
+
+<br><br>
+
+<input type="checkbox" id="numbers" checked>
+<label>Numbers</label>
+
+<br><br>
+
+<input type="checkbox" id="symbols" checked>
+<label>Symbols</label>
+
+</div>
+
+<button onclick="generatePassword()">
+Generate Password
+</button>
+
+<div id="password">
+Your password appears here
+</div>
+
+</div>
+
+<script>
+
+function generatePassword(){
+
+let length=document.getElementById("length").value;
+
+let lowercase="abcdefghijklmnopqrstuvwxyz";
+
+let uppercase="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+let numbers="0123456789";
+
+let symbols="!@#$%^&*()_+";
+
+let chars=lowercase;
+
+if(document.getElementById("uppercase").checked)
+chars+=uppercase;
+
+if(document.getElementById("numbers").checked)
+chars+=numbers;
+
+if(document.getElementById("symbols").checked)
+chars+=symbols;
+
+let password="";
+
+for(let i=0;i<length;i++){
+
+password+=chars.charAt(
+Math.floor(Math.random()*chars.length)
+);
+
+}
+
+document.getElementById("password").innerHTML=password;
+
+}
+
+</script>
+
+</body>
+
+</html>
