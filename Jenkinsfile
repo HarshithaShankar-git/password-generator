@@ -12,7 +12,7 @@ pipeline {
 
         stage('Clone Repository') {
             steps {
-                git url: 'https://github.com/HarshithaShankar/devops-assignment.git', // update repository url
+                git url: 'https://github.com/HarshithaShankar-git/password-generator.git', // update repository url
                     branch: 'main' // update branch name
             }
         }
